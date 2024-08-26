@@ -60,6 +60,7 @@ const UserViewLeft = ({ infoPersonal }: Props) => {
     if (infoPersonal.__typename && infoPersonal.__typename === "Administrative") {
         infoAdministrative = infoPersonal
     }
+
     if (infoTeacher) {
         return (
             <Grid container spacing={6}>
@@ -125,6 +126,138 @@ const UserViewLeft = ({ infoPersonal }: Props) => {
                                 <Box sx={{ display: "flex", mb: 2.7 }}>
                                     <Typography sx={{ mr: 2, fontWeight: 500, fontSize: "0.875rem" }}>Dedicación:</Typography>
                                     <Typography variant="body2">{infoTeacher.dedication}</Typography>
+                                </Box>
+                            </Box>
+                        </CardContent>
+                    </Card>
+                </Grid>
+            </Grid>
+        )
+    }
+
+    if (infoWorker) {
+        return (
+            <Grid container spacing={6}>
+                <Grid item xs={12}>
+                    <Card>
+                        <CardContent sx={{ pt: 15, display: "flex", alignItems: "center", flexDirection: "column" }}>
+                            {data.avatar ? (
+                                <CustomAvatar src={data.avatar} variant="rounded" alt={data.fullName} sx={{ width: 120, height: 120, fontWeight: 600, mb: 4 }} />
+                            ) : (
+                                <CustomAvatar skin="light" variant="rounded" color={data.avatarColor as ThemeColor} sx={{ width: 120, height: 120, fontWeight: 600, mb: 4, fontSize: "3rem" }}>
+                                    {getInitials(infoWorker.firstName)}
+                                </CustomAvatar>
+                            )}
+                            <Typography variant="h6" sx={{ mb: 2 }}>
+                                {`${infoWorker.firstName} ${infoWorker.lastName}`}
+                            </Typography>
+                        </CardContent>
+
+                        <CardContent>
+                            <Typography variant="h6">Detalles</Typography>
+                            <Divider sx={{ mt: (theme) => `${theme.spacing(4)} !important` }} />
+                            <Box sx={{ pt: 2, pb: 1 }}>
+                                <Box sx={{ display: "flex", mb: 2.7 }}>
+                                    <Typography variant="subtitle2" sx={{ mr: 2, color: "text.primary" }}>
+                                        Código QR:
+                                    </Typography>
+                                    <Typography variant="body2">{infoWorker.codeQr}</Typography>
+                                </Box>
+                                <Box sx={{ display: "flex", mb: 2.7 }}>
+                                    <Typography variant="subtitle2" sx={{ mr: 2, color: "text.primary" }}>
+                                        Correo:
+                                    </Typography>
+                                    <Typography variant="body2">{infoWorker.email}</Typography>
+                                </Box>
+                                <Box sx={{ display: "flex", mb: 2.7 }}>
+                                    <Typography variant="subtitle2" sx={{ mr: 2, color: "text.primary" }}>
+                                        Estatus:
+                                    </Typography>
+                                    <CustomChip
+                                        skin="light"
+                                        size="small"
+                                        label={infoWorker.active ? "active" : "inactive"}
+                                        color={statusColors[infoWorker.active ? "active" : "inactive"]}
+                                        sx={{
+                                            height: 20,
+                                            fontWeight: 500,
+                                            fontSize: "0.75rem",
+                                            borderRadius: "5px",
+                                            textTransform: "capitalize",
+                                        }}
+                                    />
+                                </Box>
+                                <Box sx={{ display: "flex", mb: 2.7 }}>
+                                    <Typography sx={{ mr: 2, fontWeight: 500, fontSize: "0.875rem" }}>Condición:</Typography>
+                                    <Typography variant="body2" sx={{ textTransform: "capitalize" }}>
+                                        {infoWorker.condition}
+                                    </Typography>
+                                </Box>
+                            </Box>
+                        </CardContent>
+                    </Card>
+                </Grid>
+            </Grid>
+        )
+    }
+
+    if (infoAdministrative) {
+        return (
+            <Grid container spacing={6}>
+                <Grid item xs={12}>
+                    <Card>
+                        <CardContent sx={{ pt: 15, display: "flex", alignItems: "center", flexDirection: "column" }}>
+                            {data.avatar ? (
+                                <CustomAvatar src={data.avatar} variant="rounded" alt={data.fullName} sx={{ width: 120, height: 120, fontWeight: 600, mb: 4 }} />
+                            ) : (
+                                <CustomAvatar skin="light" variant="rounded" color={data.avatarColor as ThemeColor} sx={{ width: 120, height: 120, fontWeight: 600, mb: 4, fontSize: "3rem" }}>
+                                    {getInitials(infoAdministrative.firstName)}
+                                </CustomAvatar>
+                            )}
+                            <Typography variant="h6" sx={{ mb: 2 }}>
+                                {`${infoAdministrative.firstName} ${infoAdministrative.lastName}`}
+                            </Typography>
+                        </CardContent>
+
+                        <CardContent>
+                            <Typography variant="h6">Detalles</Typography>
+                            <Divider sx={{ mt: (theme) => `${theme.spacing(4)} !important` }} />
+                            <Box sx={{ pt: 2, pb: 1 }}>
+                                <Box sx={{ display: "flex", mb: 2.7 }}>
+                                    <Typography variant="subtitle2" sx={{ mr: 2, color: "text.primary" }}>
+                                        Código QR:
+                                    </Typography>
+                                    <Typography variant="body2">{infoAdministrative.codeQr}</Typography>
+                                </Box>
+                                <Box sx={{ display: "flex", mb: 2.7 }}>
+                                    <Typography variant="subtitle2" sx={{ mr: 2, color: "text.primary" }}>
+                                        Correo:
+                                    </Typography>
+                                    <Typography variant="body2">{infoAdministrative.email}</Typography>
+                                </Box>
+                                <Box sx={{ display: "flex", mb: 2.7 }}>
+                                    <Typography variant="subtitle2" sx={{ mr: 2, color: "text.primary" }}>
+                                        Estatus:
+                                    </Typography>
+                                    <CustomChip
+                                        skin="light"
+                                        size="small"
+                                        label={infoAdministrative.active ? "active" : "inactive"}
+                                        color={statusColors[infoAdministrative.active ? "active" : "inactive"]}
+                                        sx={{
+                                            height: 20,
+                                            fontWeight: 500,
+                                            fontSize: "0.75rem",
+                                            borderRadius: "5px",
+                                            textTransform: "capitalize",
+                                        }}
+                                    />
+                                </Box>
+                                <Box sx={{ display: "flex", mb: 2.7 }}>
+                                    <Typography sx={{ mr: 2, fontWeight: 500, fontSize: "0.875rem" }}>Condición:</Typography>
+                                    <Typography variant="body2" sx={{ textTransform: "capitalize" }}>
+                                        {infoAdministrative.position}
+                                    </Typography>
                                 </Box>
                             </Box>
                         </CardContent>

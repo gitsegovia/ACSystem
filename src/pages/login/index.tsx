@@ -59,8 +59,8 @@ const FormControlLabel = styled(MuiFormControlLabel)<FormControlLabelProps>(({ t
 }));
 
 const schema = yup.object().shape({
-  email: yup.string().email().required(),
-  password: yup.string().required(),
+  email: yup.string().email("Ingresa un correo válido").required("Correo requerido"),
+  password: yup.string().required("Contraseña requerida"),
 });
 
 const defaultValues = {
@@ -103,7 +103,7 @@ const LoginPage = () => {
     auth.login({ email, password, rememberMe }, () => {
       setError("email", {
         type: "manual",
-        message: "Correo o contrasenya incorrectos",
+        message: "Correo o contraseña incorrectos",
       });
     });
   };

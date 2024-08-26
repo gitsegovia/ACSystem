@@ -28,10 +28,10 @@ const FooterIllustrations = (props: FooterIllustrationsProp) => {
   // ** Vars
   const hidden = useMediaQuery(theme.breakpoints.down("md"));
 
-  const src = image || `/images/logos/background_consulta_trabajadores.webp`;
+  const src = image || `/images/logos/background_asistencia.webp`;
 
   if (!hidden) {
-    return <MaskImg alt="mask" src={src} />;
+    return <MaskImg alt="" src={src} />;
   } else {
     return null;
   }
