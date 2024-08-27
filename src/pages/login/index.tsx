@@ -45,6 +45,7 @@ import BlankLayout from "src/@core/layouts/BlankLayout";
 
 // ** Demo Imports
 import FooterIllustrations from "src/views/pages/auth/FooterIllustrations";
+import Translations from "src/layouts/components/Translations";
 
 // ** Styled Components
 const Card = styled(MuiCard)<CardProps>(({ theme }) => ({
@@ -121,8 +122,8 @@ const LoginPage = () => {
             }}
           >
             <img src="/images/logos/logo.png" style={{ width: "40%" }} />
-            <Typography variant="h6" sx={{ ml: 2, mb: 4, lineHeight: 1, fontWeight: 700, fontSize: "1.8rem !important" }}>
-              {themeConfig.templateName}
+            <Typography variant="h6" sx={{ ml: 2, mb: 4, mt: 2, lineHeight: 1, fontWeight: 700, fontSize: "1.8rem !important" }}>
+              <Translations text={themeConfig.templateName} />
             </Typography>
           </Box>
           <form noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)} style={{ marginBottom: 20 }}>
