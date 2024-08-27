@@ -58,9 +58,6 @@ interface UserStatusType {
 }
 
 // ** Vars
-const userConditionObj: UserRoleType = {
-  secretaria: { icon: "mdi:laptop", color: "error.main" },
-};
 
 interface CellType {
   row: Administrative;
@@ -201,8 +198,7 @@ const columns: GridColDef[] = [
     headerName: "Cargo",
     renderCell: ({ row }: CellType) => {
       return (
-        <Box sx={{ display: "flex", alignItems: "center", "& svg": { mr: 3, color: userConditionObj[row.position].color ?? "error.main" } }}>
-          <Icon icon={userConditionObj[row.position].icon} fontSize={20} />
+        <Box sx={{ display: "flex", alignItems: "center", "& svg": { mr: 3, color: "error.main" } }}>
           <Typography noWrap sx={{ color: "text.secondary", textTransform: "capitalize" }}>
             {row.position}
           </Typography>

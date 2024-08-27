@@ -1,39 +1,40 @@
-import uris from "src/configs/uris"
-import { Employee } from "../types"
+import uris from "src/configs/uris";
+import { Employee } from "../types";
 
 export const getListIdEmployeeAxios = async (): Promise<string[]> => {
-    const endpoint = uris.genesys
+  const endpoint = uris.genesys;
 
-    const headers = {
-        "content-type": "application/json",
-    }
-    const graphqlQuery = {
-        operationName: "getAllIdEmployee",
-        query: `query getAllIdEmployee {
+  const headers = {
+    "content-type": "application/json",
+  };
+  const graphqlQuery = {
+    operationName: "getAllIdEmployee",
+    query: `query getAllIdEmployee {
             getAllIdEmployee
         }`,
-    }
+  };
 
-    const options = {
-        method: "POST",
-        headers: headers,
-        body: JSON.stringify(graphqlQuery),
-    }
+  const options: RequestInit = {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(graphqlQuery),
+    cache: "no-store", // Evita el caché en la solicitud
+  };
 
-    const response = await fetch(endpoint, options)
-    const { data } = await response.json()
+  const response = await fetch(endpoint, options);
+  const { data } = await response.json();
 
-    return data?.getAllIdEmployee ?? []
-}
+  return data?.getAllIdEmployee ?? [];
+};
 
 export const getDataEmployeeByIdAxios = async (id: string): Promise<Employee | null> => {
-    const endpoint = uris.genesys
+  const endpoint = uris.genesys;
 
-    const headers = {
-        "content-type": "application/json",
-    }
-    const graphqlQuery = {
-        query: `
+  const headers = {
+    "content-type": "application/json",
+  };
+  const graphqlQuery = {
+    query: `
         query getDataEmployeeById($id: UUID!){
             getDataEmployeeById(id: $id){
                 id
@@ -51,18 +52,19 @@ export const getDataEmployeeByIdAxios = async (id: string): Promise<Employee | n
                 }
             }
         }`,
-        variables: { id: id },
-    }
+    variables: { id: id },
+  };
 
-    const options = {
-        method: "POST",
-        headers: headers,
-        body: JSON.stringify(graphqlQuery),
-    }
+  const options: RequestInit = {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(graphqlQuery),
+    cache: "no-store",
+  };
 
-    const response = await fetch(endpoint, options)
+  const response = await fetch(endpoint, options);
 
-    const { data, error } = await response.json()
+  const { data, error } = await response.json();
 
-    return data?.getDataEmployeeById ?? null
-}
+  return data?.getDataEmployeeById ?? null;
+};

@@ -17,7 +17,7 @@ const UserView = ({ tab, attendanceData }: InferGetStaticPropsType<typeof getSta
 export const getStaticPaths: GetStaticPaths = () => {
   return {
     paths: [{ params: { tab: "overview" } }, { params: { tab: "security" } }, { params: { tab: "billing-plan" } }, { params: { tab: "notification" } }, { params: { tab: "connection" } }],
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
