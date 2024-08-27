@@ -23,22 +23,20 @@ function Scan() {
 
   const markAttendance = async (code: String) => {
     setLoading(true);
-    const splitCode = code.split("-");
+    const codeCleam = code.replace("https://", "").replace("http://", "").replace("qr.guarico.gob.ve/", "");
 
-    if (splitCode[0] === "A") {
-      const { data: dataAttendacen, error } = await useLazyMarkAttendanceAdministrative({ mutate, values: { codeQr: code, typeMark: "OUT" } });
+    const { data: dataAttendacen, error } = await useLazyMarkAttendanceAdministrative({ mutate, values: { codeQr: codeCleam, typeMark: "OUT" } });
 
-      if (dataAttendacen) {
-        setAttendance(dataAttendacen);
-        toast.success("Registro completado");
-      }
-      if (error !== null && error !== "") {
-        toast.error(error);
-      }
-
-      setLoading(false);
-      setData("");
+    if (dataAttendacen) {
+      setAttendance(dataAttendacen);
+      toast.success("Registro completado");
     }
+    if (error !== null && error !== "") {
+      toast.error(error);
+    }
+
+    setLoading(false);
+    setData("");
   };
 
   const clearData = () => {

@@ -179,7 +179,7 @@ const columns: GridColDef[] = [
     field: "fullName",
     headerName: "Personal",
     renderCell: ({ row }: CellType) => {
-      const { firstName, lastName, codeQr } = row;
+      const { firstName, lastName, idnDni } = row;
 
       return (
         <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -187,7 +187,7 @@ const columns: GridColDef[] = [
           <Box sx={{ display: "flex", alignItems: "flex-start", flexDirection: "column" }}>
             <LinkStyled href={`/apps/administrative/view/overview/${row.id}`}>{`${firstName} ${lastName}`}</LinkStyled>
             <Typography noWrap variant="caption">
-              {`@${codeQr}`}
+              {`@${idnDni}`}
             </Typography>
           </Box>
         </Box>
