@@ -74,7 +74,7 @@ interface FormData {
 }
 
 const LoginPage = () => {
-  const [rememberMe, setRememberMe] = useState<boolean>(true);
+  const [rememberMe, setRememberMe] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   // ** Hooks
