@@ -121,7 +121,7 @@ const SidebarAddUser = (props: SidebarAddUserType) => {
   return (
     <Drawer open={open} anchor="right" variant="temporary" onClose={handleClose} ModalProps={{ keepMounted: true }} sx={{ "& .MuiDrawer-paper": { width: { xs: 300, sm: 400 } } }}>
       <Header>
-        <Typography variant="h6">Nuevo administrativo</Typography>
+        <Typography variant="h6">Nuevo personal</Typography>
         <IconButton size="small" onClick={handleClose} sx={{ color: "text.primary" }}>
           <Icon icon="mdi:close" fontSize={20} />
         </IconButton>
@@ -189,16 +189,11 @@ const SidebarAddUser = (props: SidebarAddUserType) => {
             {errors.gender && <FormHelperText sx={{ color: "error.main" }}>{errors.gender.message}</FormHelperText>}
           </FormControl>
           <FormControl fullWidth sx={{ mb: 6 }}>
-            <InputLabel id="condition-select">Cargo</InputLabel>
             <Controller
               name="position"
               control={control}
               rules={{ required: true }}
-              render={({ field: { value, onChange } }) => (
-                <Select fullWidth value={value} id="select-condition" label="Condición" labelId="condition-select" onChange={onChange} inputProps={{ placeholder: "Seleccione" }}>
-                  <MenuItem value="secretaria">Secretaria</MenuItem>
-                </Select>
-              )}
+              render={({ field: { value, onChange } }) => <TextField value={value} label="Cargo" onChange={onChange} placeholder="" error={Boolean(errors.position)} />}
             />
             {errors.position && <FormHelperText sx={{ color: "error.main" }}>{errors.position.message}</FormHelperText>}
           </FormControl>
@@ -208,7 +203,7 @@ const SidebarAddUser = (props: SidebarAddUserType) => {
               Registrar
             </Button>
             <Button size="large" variant="outlined" color="secondary" onClick={handleClose}>
-              Cancel
+              Cancelar
             </Button>
           </Box>
         </form>
