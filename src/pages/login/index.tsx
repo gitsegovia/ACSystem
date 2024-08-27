@@ -121,12 +121,9 @@ const LoginPage = () => {
             }}
           >
             <img src="/images/logos/logo.png" style={{ width: "40%" }} />
-            <Typography variant="h6" sx={{ ml: 2, mt: 0, lineHeight: 1, fontWeight: 700, fontSize: "1.8rem !important" }}>
+            <Typography variant="h6" sx={{ ml: 2, mb: 4, lineHeight: 1, fontWeight: 700, fontSize: "1.8rem !important" }}>
               {themeConfig.templateName}
             </Typography>
-          </Box>
-          <Box sx={{ mb: 6 }}>
-            <Typography variant="body2">Inicar sesión</Typography>
           </Box>
           <form noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)} style={{ marginBottom: 20 }}>
             <FormControl fullWidth sx={{ mb: 4 }}>
