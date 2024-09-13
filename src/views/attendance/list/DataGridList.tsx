@@ -94,7 +94,7 @@ const columns: GridColDef[] = [
             fontWeight: 600,
             textAlign: "right",
           }}
-        >{`${moment(row.day).format("DD-MM-YYYY")}`}</Typography>
+        >{`${moment(row.day).tz("America/Caracas").format("DD-MM-YYYY")}`}</Typography>
       );
     },
   },

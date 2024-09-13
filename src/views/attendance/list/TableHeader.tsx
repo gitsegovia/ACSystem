@@ -66,7 +66,7 @@ const TableHeader = (props: TableHeaderProps) => {
       let lastName = Worker ? `${Worker.lastName}` : Teacher ? `${Teacher.lastName}` : Administrative ? `${Administrative.lastName}` : "";
       const typePersonal = row.Worker ? "Worker" : row.Administrative ? "Administrative" : "Teacher";
 
-      listData.push([`${firstName} ${lastName}`, statusObj[typePersonal].text, `${moment(row.day).format("DD-MM-YYYY")}`, `${row.in}`, `${row.out ?? ""}`]);
+      listData.push([`${firstName} ${lastName}`, statusObj[typePersonal].text, `${moment(row.day).tz("America/Caracas").format("DD-MM-YYYY")}`, `${row.in}`, `${row.out ?? ""}`]);
     });
 
     toast.promise(generatePDF({ title: "Libro de Asistencia", headerTable, dataFilter: listData }), {
