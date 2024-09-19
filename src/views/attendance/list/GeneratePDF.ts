@@ -1,6 +1,6 @@
 "use client";
 import jsPDF from "jspdf";
-import "jspdf-autotable";
+import autoTable from "jspdf-autotable";
 
 type Props = {
   title: string;
@@ -12,21 +12,25 @@ type Props = {
 export default function generatePDF({ title, headerTable, dataFilter, nameFile }: Props) {
   return new Promise((resolve: any, reject: any) => {
     try {
-      var obj = new jsPDF("landscape");
+      var doc = new jsPDF("landscape");
 
       // Add title heading
-      obj.setFontSize(18);
-      obj.text(title, 20, 20);
+      doc.setFontSize(18);
+      doc.text(title, 20, 20);
 
       // Create the table
-      obj.setFontSize(12);
-      //   obj.autoTable({
-      //     startX: 30,
-      //     startY: 40, // Adjust startY to make space for the title
-      //     head: [headerTable],
-      //     body: dataFilter,
-      //   });
-      obj.save(`${nameFile ?? "Asistencia"}.pdf`);
+      doc.setFontSize(12);
+      autoTable(doc, {
+        margin: {
+          left: 20,
+          right: 20,
+          top: 30,
+        },
+        startY: 40,
+        head: [headerTable],
+        body: dataFilter,
+      });
+      doc.save(`${nameFile ?? "Asistencia"}.pdf`);
       resolve();
     } catch (err) {
       reject();
