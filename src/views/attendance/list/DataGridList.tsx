@@ -112,7 +112,7 @@ const columns: GridColDef[] = [
             textAlign: "right",
             color: row.in ? "success.main" : "error.main",
           }}
-        >{`${row.in}`}</Typography>
+        >{`${moment(row.in, "HH:mm").format("hh:mm a")}`}</Typography>
       );
     },
   },
@@ -130,7 +130,7 @@ const columns: GridColDef[] = [
             textAlign: "right",
             color: row.out ? "success.main" : "error.main",
           }}
-        >{`${row.out ?? ""}`}</Typography>
+        >{`${moment(row.out, "HH:mm").format("hh:mm a") ?? ""}`}</Typography>
       );
     },
   },

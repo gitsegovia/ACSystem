@@ -99,7 +99,7 @@ const AnalyticsActivityTimeline = ({ info }: Props) => {
                         justifyContent: "space-between",
                       }}
                     >
-                      <Typography sx={{ mr: 2, fontWeight: 500 }}>{`Entrada: ${att.in ?? ""}`}</Typography>
+                      <Typography sx={{ mr: 2, fontWeight: 500 }}>{`Entrada: ${moment(att.in, "HH:mm").format("hh:mm a") ?? ""}`}</Typography>
                       <Typography variant="body2" sx={{ color: "text.disabled" }}>
                         {att.in &&
                           moment(`${moment().tz("America/Caracas").format("YYYY-MM-DD")} ${att.in}`)
@@ -130,7 +130,7 @@ const AnalyticsActivityTimeline = ({ info }: Props) => {
                       justifyContent: "space-between",
                     }}
                   >
-                    <Typography sx={{ mr: 2, fontWeight: 500 }}>{`Salida: ${att.out ?? ""}`}</Typography>
+                    <Typography sx={{ mr: 2, fontWeight: 500 }}>{`Salida: ${moment(att.out, "HH:mm").format("hh:mm a") ?? ""}`}</Typography>
                     {att.out && (
                       <Typography variant="body2" sx={{ color: "text.disabled" }}>
                         {moment(`${moment().tz("America/Caracas").format("YYYY-MM-DD")} ${att.out}`)

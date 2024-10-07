@@ -38,8 +38,8 @@ const generateXLS = ({ title, worksheetname, dataFilter }: Props) => {
             Personal: `${firstName} ${lastName}`,
             "Tipo de personal": statusObj[typePersonal].text,
             Fecha: `${moment(row.day).tz("America/Caracas").format("DD-MM-YYYY")}`,
-            Entrada: `${row.in}`,
-            Salida: `${row.out ?? ""}`,
+            Entrada: `${moment(row.in, "HH:mm").format("hh:mm a")}`,
+            Salida: `${moment(row.out, "HH:mm").format("hh:mm a") ?? ""}`,
           };
         });
 
