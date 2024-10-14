@@ -56,7 +56,7 @@ const TableHeader = (props: TableHeaderProps) => {
   };
 
   const handlePDF = () => {
-    const headerTable = ["Personal", "Tipo de personal", "Fecha", "Entrada", "Salida"];
+    const headerTable = ["Personal", "Tipo de personal", "Fecha", "Entrada", "Estadus", "Salida"];
 
     const listData: string[][] = [];
     dataFilter.forEach((row) => {
@@ -71,7 +71,8 @@ const TableHeader = (props: TableHeaderProps) => {
         statusObj[typePersonal].text,
         `${moment(row.day).tz("America/Caracas").format("DD-MM-YYYY")}`,
         `${moment(row.in, "HH:mm").format("hh:mm a")}`,
-        `${moment(row.out, "HH:mm").format("hh:mm a") ?? ""}`,
+        `${moment(row.in, "HH:mm").isAfter(moment("08:20", "HH:mm")) ? "Entrada tardía" : "Entrada correcta"}`,
+        `${row.out ? moment(row.out, "HH:mm").format("hh:mm a") : ""}`,
       ]);
     });
 

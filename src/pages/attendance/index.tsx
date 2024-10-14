@@ -335,7 +335,7 @@ const AttendanceBook = () => {
                 </Grid>
                 <Grid item sm={4} xs={12}>
                   <FormControl fullWidth sx={{ mb: 6 }}>
-                    <DatePicker value={dateEnd} onChange={(e) => setDateEnd(e)} label="Desde" format="YYYY-MM-DD" minDate={dateStart ?? undefined} />
+                    <DatePicker value={dateEnd} onChange={(e) => setDateEnd(e)} label="Hasta" format="YYYY-MM-DD" minDate={dateStart ?? undefined} />
                   </FormControl>
                 </Grid>
                 <Grid item sm={2} xs={12}>
