@@ -17,7 +17,7 @@ export default function generatePDF({ title, headerTable, dataFilter, nameFile }
       var pageWidth = doc.internal.pageSize.width || doc.internal.pageSize.getWidth();
       // Cabecera
       doc.setFontSize(12);
-      doc.text("Gobernacion del Estado Bolivariano de Guárico", pageWidth / 2, 15, { align: "center" }); // Membrete del departamento
+      doc.text("Gobernación del Estado Bolivariano de Guárico", pageWidth / 2, 15, { align: "center" }); // Membrete del departamento
       doc.text("Dirección General de Informática", pageWidth / 2, 20, { align: "center" }); // Membrete del departamento
 
       // Logos
