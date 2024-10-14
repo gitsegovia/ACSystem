@@ -303,6 +303,12 @@ const AttendanceBook = () => {
     return false;
   }
 
+  function isSort(a: Attendance, b: Attendance) {
+    const horaA = moment(a.in, "HH:mm");
+    const horaB = moment(b.in, "HH:mm");
+    return horaA.diff(horaB);
+  }
+
   const handleFilter = useCallback((val: string) => {
     setValue(val);
   }, []);
@@ -347,8 +353,8 @@ const AttendanceBook = () => {
             </form>
           </CardContent>
           <Divider />
-          <TableHeader value={value} handleFilter={handleFilter} dataFilter={dataAll.filter(isFilter)} />
-          <DataGridList dataFilter={dataAll.filter(isFilter)} />
+          <TableHeader value={value} handleFilter={handleFilter} dataFilter={dataAll.filter(isFilter).sort(isSort)} />
+          <DataGridList dataFilter={dataAll.filter(isFilter).sort(isSort)} />
         </Card>
       </Grid>
     </Grid>
