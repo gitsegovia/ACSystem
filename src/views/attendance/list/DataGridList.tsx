@@ -104,15 +104,37 @@ const columns: GridColDef[] = [
     minWidth: 150,
     headerName: "Entrada",
     renderCell: ({ row }: CellType) => {
+      const isAfter = moment(row.in, "HH:mm").isAfter(moment("08:15", "HH:mm"));
       return (
         <Typography
           variant="body2"
           sx={{
             fontWeight: 600,
             textAlign: "right",
-            color: row.in ? "success.main" : "error.main",
+            color: isAfter ? "error.main" : "success.main",
           }}
         >{`${moment(row.in, "HH:mm").format("hh:mm a")}`}</Typography>
+      );
+    },
+  },
+  {
+    flex: 0.15,
+    field: "status",
+    minWidth: 150,
+    headerName: "Estatus",
+    renderCell: ({ row }: CellType) => {
+      const isAfter = moment(row.in, "HH:mm").isAfter(moment("08:15", "HH:mm"));
+      return (
+        <Typography
+          variant="body2"
+          sx={{
+            fontWeight: 600,
+            textAlign: "right",
+            color: isAfter ? "error.main" : "success.main",
+          }}
+        >
+          {isAfter ? "Inacistente" : "Entrada correcta"}
+        </Typography>
       );
     },
   },

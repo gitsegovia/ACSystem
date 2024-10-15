@@ -60,6 +60,7 @@ const RenderTabContent = ({ data }: { data: Attendance[] }) => {
             <TableCell align="right">Tipo de personal</TableCell>
             <TableCell align="right">Fecha</TableCell>
             <TableCell align="right">Entrada</TableCell>
+            <TableCell align="right">Estatus</TableCell>
             <TableCell align="right" sx={{ whiteSpace: "nowrap" }}>
               Salida
             </TableCell>
@@ -78,6 +79,8 @@ const RenderTabContent = ({ data }: { data: Attendance[] }) => {
             if (row.Teacher) {
               namePersonal = `${row.Teacher?.firstName} ${row.Teacher?.lastName}`;
             }
+
+            const isAfter = moment(row.in, "HH:mm").isAfter(moment("08:15", "HH:mm"));
 
             return (
               <TableRow key={index} sx={{ "& .MuiTableCell-root": { border: 0, py: (theme) => `${theme.spacing(3)} !important` } }}>
@@ -110,7 +113,7 @@ const RenderTabContent = ({ data }: { data: Attendance[] }) => {
                     sx={{
                       fontWeight: 600,
                       textAlign: "right",
-                      color: row.in ? "success.main" : "error.main",
+                      color: isAfter ? "error.main" : "success.main",
                     }}
                   >{`${row.in}`}</Typography>
                 </TableCell>
@@ -120,9 +123,21 @@ const RenderTabContent = ({ data }: { data: Attendance[] }) => {
                     sx={{
                       fontWeight: 600,
                       textAlign: "right",
+                      color: isAfter ? "error.main" : "success.main",
+                    }}
+                  >
+                    {isAfter ? "Inacistente" : "Entrada correcta"}
+                  </Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontWeight: 600,
+                      textAlign: "right",
                       color: row.out ? "success.main" : "error.main",
                     }}
-                  >{`${row.out ?? "Sin marcar"}`}</Typography>
+                  >{`${isAfter ? "" : row.out ?? "Sin marcar"}`}</Typography>
                 </TableCell>
               </TableRow>
             );
