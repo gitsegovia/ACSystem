@@ -133,7 +133,7 @@ const columns: GridColDef[] = [
             color: isAfter ? "error.main" : "success.main",
           }}
         >
-          {isAfter ? "Inacistente" : "Entrada correcta"}
+          {isAfter ? "Inasistente" : "Entrada correcta"}
         </Typography>
       );
     },

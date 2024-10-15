@@ -126,7 +126,7 @@ const RenderTabContent = ({ data }: { data: Attendance[] }) => {
                       color: isAfter ? "error.main" : "success.main",
                     }}
                   >
-                    {isAfter ? "Inacistente" : "Entrada correcta"}
+                    {isAfter ? "Inasistente" : "Entrada correcta"}
                   </Typography>
                 </TableCell>
                 <TableCell>

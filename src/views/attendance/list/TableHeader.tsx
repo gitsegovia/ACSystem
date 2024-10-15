@@ -72,7 +72,7 @@ const TableHeader = (props: TableHeaderProps) => {
         statusObj[typePersonal].text,
         `${moment(row.day).tz("America/Caracas").format("DD-MM-YYYY")}`,
         `${moment(row.in, "HH:mm").format("hh:mm a")}`,
-        `${isAfter ? "Inacistente" : "Entrada correcta"}`,
+        `${isAfter ? "Inasistente" : "Entrada correcta"}`,
         `${isAfter ? "" : row.out ? moment(row.out, "HH:mm").format("hh:mm a") : ""}`,
       ]);
     });
