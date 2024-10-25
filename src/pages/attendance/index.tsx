@@ -353,8 +353,8 @@ const AttendanceBook = () => {
             </form>
           </CardContent>
           <Divider />
-          <TableHeader value={value} handleFilter={handleFilter} dataFilter={dataAll.filter(isFilter).sort(isSort)} />
-          <DataGridList dataFilter={dataAll.filter(isFilter).sort(isSort)} />
+          <TableHeader value={value} handleFilter={handleFilter} dataFilter={dataAll.filter(isFilter)} />
+          <DataGridList dataFilter={dataAll.filter(isFilter)} />
         </Card>
       </Grid>
     </Grid>
