@@ -52,7 +52,7 @@ export default function generatePDF({ title, headerTable, dataFilter, nameFile }
           doc.text("               Ivonne K. Camacho S.", pageWidth / 2, pageHeight - 20, { align: "center" });
           doc.text("               Directora General de Informática", pageWidth / 2, pageHeight - 15, { align: "center" });
 
-          const texto = "Página " + currentPage + " de " + doc.getNumberOfPages();
+          const texto = "Página " + currentPage.toString();
           const anchoTexto = doc.getTextWidth(texto);
           doc.text(texto, pageWidth - (anchoTexto + 10), pageHeight - 10); // Número de página
         },
