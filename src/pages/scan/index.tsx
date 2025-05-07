@@ -81,11 +81,9 @@ function Scan() {
         }}
       >
         <Grid container spacing={6} className="match-height" justifyContent="center" alignItems="center">
-        
           <Grid item md={4}>
             <DialogScanQr setData={setData} />
           </Grid>
-       
         </Grid>
       </Box>
     );
@@ -94,33 +92,32 @@ function Scan() {
   return (
     <Box>
       <Grid container spacing={6} className="match-height" justifyContent="center" alignItems="center">
-          <Grid
-            item
-            md={12}
-            sx={{
-              display: "flex",
-              flexDirection: "column",
+        <Grid
+          item
+          md={12}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <Countdown
+            date={Date.now() + 10000}
+            intervalDelay={0}
+            precision={3}
+            onComplete={clearData}
+            renderer={(props) => {
+              return (
+                <>
+                  {attendance.Teacher && <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Teacher, __typename: "Teacher" }} clearData={clearData} />}
+                  {attendance.Worker && <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Worker, __typename: "Worker" }} clearData={clearData} />}
+                  {attendance.Administrative && (
+                    <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Administrative, __typename: "Administrative" }} clearData={clearData} />
+                  )}
+                </>
+              );
             }}
-          >
-            <Countdown
-              date={Date.now() + 10000}
-              intervalDelay={0}
-              precision={3}
-              onComplete={clearData}
-              renderer={(props) => {
-                return (
-                  <>
-                    {attendance.Teacher && <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Teacher, __typename: "Teacher" }} clearData={clearData} />}
-                    {attendance.Worker && <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Worker, __typename: "Worker" }} clearData={clearData} />}
-                    {attendance.Administrative && (
-                      <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Administrative, __typename: "Administrative" }} clearData={clearData} />
-                    )}
-                  </>
-                );
-              }}
-            />
-          </Grid>
-        )}
+          />
+        </Grid>
       </Grid>
     </Box>
   );
