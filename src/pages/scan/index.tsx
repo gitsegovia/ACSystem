@@ -72,17 +72,19 @@ function Scan() {
   }
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "100vh",
-      }}
-    >
+    <Box>
       <Grid container spacing={6} className="match-height" justifyContent="center" alignItems="center">
         {!attendance ? (
-          <Grid item md={4}>
+          <Grid
+            item
+            md={4}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "100vh",
+            }}
+          >
             <DialogScanQr setData={setData} />
           </Grid>
         ) : (

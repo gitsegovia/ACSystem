@@ -16,7 +16,7 @@ type Props = {
 const UserViewMarkAttendance = ({ attendanceData, infoPersonal, clearData }: Props) => {
   return (
     <Grid container spacing={6} sx={{ paddingX: "5rem" }}>
-      <Grid item xs={12} md={5} lg={4}>
+      <Grid item md={12}>
         <Button
           variant="contained"
           color="primary"
