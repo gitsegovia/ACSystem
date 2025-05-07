@@ -2,6 +2,7 @@ import React, { useState, useEffect, ReactNode, useRef } from "react";
 
 // ** MUI Imports
 import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import DialogScanQr from "src/views/pages/scan";
@@ -87,6 +88,9 @@ function Scan() {
           </Grid>
         ) : (
           <Grid item md={12}>
+            <Button variant="contained" color="primary" onClick={clearData}>
+              Aceptar
+            </Button>
             <Countdown
               date={Date.now() + 10000}
               intervalDelay={0}
