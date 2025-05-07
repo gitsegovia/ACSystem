@@ -1,8 +1,7 @@
-import React, { useState, useEffect, ReactNode, useRef } from "react";
+import React, { useState, useEffect, ReactNode } from "react";
 
 // ** MUI Imports
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import DialogScanQr from "src/views/pages/scan";
@@ -103,26 +102,11 @@ function Scan() {
               renderer={(props) => {
                 return (
                   <>
-                    <Grid container spacing={6} sx={{ paddingX: "5rem", paddingY: "5rem" }}>
-                      <Grid item xs={12}>
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          onClick={clearData}
-                          sx={{
-                            width: "25%",
-                            marginRight: "auto",
-                            marginLeft: "auto",
-                            marginBottom: "15px",
-                          }}
-                        >
-                          Aceptar
-                        </Button>
-                      </Grid>
-                    </Grid>
-                    {attendance.Teacher && <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Teacher, __typename: "Teacher" }} />}
-                    {attendance.Worker && <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Worker, __typename: "Worker" }} />}
-                    {attendance.Administrative && <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Administrative, __typename: "Administrative" }} />}
+                    {attendance.Teacher && <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Teacher, __typename: "Teacher" }} clearData={clearData} />}
+                    {attendance.Worker && <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Worker, __typename: "Worker" }} clearData={clearData} />}
+                    {attendance.Administrative && (
+                      <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Administrative, __typename: "Administrative" }} clearData={clearData} />
+                    )}
                   </>
                 );
               }}
