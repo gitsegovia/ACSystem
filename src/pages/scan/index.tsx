@@ -95,19 +95,23 @@ function Scan() {
               flexDirection: "column",
             }}
           >
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={clearData}
-              sx={{
-                width: "25%",
-                marginRight: "auto",
-                marginLeft: "auto",
-                marginBottom: "15px",
-              }}
-            >
-              Aceptar
-            </Button>
+            <Grid container spacing={6} sx={{ paddingX: "5rem", paddingY: "5rem" }}>
+              <Grid item xs={12}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={clearData}
+                  sx={{
+                    width: "25%",
+                    marginRight: "auto",
+                    marginLeft: "auto",
+                    marginBottom: "15px",
+                  }}
+                >
+                  Aceptar
+                </Button>
+              </Grid>
+            </Grid>
             <Countdown
               date={Date.now() + 10000}
               intervalDelay={0}
