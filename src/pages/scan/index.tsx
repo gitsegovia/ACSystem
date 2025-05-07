@@ -70,24 +70,30 @@ function Scan() {
       </Box>
     );
   }
+  if (!attendance) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100vh",
+        }}
+      >
+        <Grid container spacing={6} className="match-height" justifyContent="center" alignItems="center">
+        
+          <Grid item md={4}>
+            <DialogScanQr setData={setData} />
+          </Grid>
+       
+        </Grid>
+      </Box>
+    );
+  }
 
   return (
     <Box>
       <Grid container spacing={6} className="match-height" justifyContent="center" alignItems="center">
-        {!attendance ? (
-          <Grid
-            item
-            md={4}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              height: "100vh",
-            }}
-          >
-            <DialogScanQr setData={setData} />
-          </Grid>
-        ) : (
           <Grid
             item
             md={12}

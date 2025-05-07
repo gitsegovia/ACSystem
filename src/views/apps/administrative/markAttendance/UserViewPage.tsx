@@ -22,7 +22,7 @@ const UserViewMarkAttendance = ({ attendanceData, infoPersonal, clearData }: Pro
           color="primary"
           onClick={clearData}
           sx={{
-            width: "50%",
+            width: "80%",
             marginRight: "auto",
             marginLeft: "auto",
             marginBottom: "15px",
