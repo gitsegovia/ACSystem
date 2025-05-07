@@ -87,8 +87,25 @@ function Scan() {
             <DialogScanQr setData={setData} />
           </Grid>
         ) : (
-          <Grid item md={12}>
-            <Button variant="contained" color="primary" onClick={clearData}>
+          <Grid
+            item
+            md={12}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={clearData}
+              sx={{
+                width: "25%",
+                marginRight: "auto",
+                marginLeft: "auto",
+                marginBottom: "15px",
+              }}
+            >
               Aceptar
             </Button>
             <Countdown
@@ -97,15 +114,7 @@ function Scan() {
               precision={3}
               onComplete={clearData}
               renderer={(props) => {
-                if (attendance.Teacher) {
-                  return <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Teacher, __typename: "Teacher" }} />;
-                }
-                if (attendance.Worker) {
-                  return <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Worker, __typename: "Worker" }} />;
-                }
-                if (attendance.Administrative) {
-                  return <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Administrative, __typename: "Administrative" }} />;
-                }
+                return <CircularProgress />;
               }}
             />
           </Grid>
