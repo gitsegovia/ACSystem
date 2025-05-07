@@ -95,38 +95,36 @@ function Scan() {
               flexDirection: "column",
             }}
           >
-            <Grid container spacing={6} sx={{ paddingX: "5rem", paddingY: "5rem" }}>
-              <Grid item xs={12}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={clearData}
-                  sx={{
-                    width: "25%",
-                    marginRight: "auto",
-                    marginLeft: "auto",
-                    marginBottom: "15px",
-                  }}
-                >
-                  Aceptar
-                </Button>
-              </Grid>
-            </Grid>
             <Countdown
               date={Date.now() + 10000}
               intervalDelay={0}
               precision={3}
               onComplete={clearData}
               renderer={(props) => {
-                if (attendance.Teacher) {
-                  return <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Teacher, __typename: "Teacher" }} />;
-                }
-                if (attendance.Worker) {
-                  return <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Worker, __typename: "Worker" }} />;
-                }
-                if (attendance.Administrative) {
-                  return <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Administrative, __typename: "Administrative" }} />;
-                }
+                return (
+                  <>
+                    <Grid container spacing={6} sx={{ paddingX: "5rem", paddingY: "5rem" }}>
+                      <Grid item xs={12}>
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={clearData}
+                          sx={{
+                            width: "25%",
+                            marginRight: "auto",
+                            marginLeft: "auto",
+                            marginBottom: "15px",
+                          }}
+                        >
+                          Aceptar
+                        </Button>
+                      </Grid>
+                    </Grid>
+                    {attendance.Teacher && <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Teacher, __typename: "Teacher" }} />}
+                    {attendance.Worker && <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Worker, __typename: "Worker" }} />}
+                    {attendance.Administrative && <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Administrative, __typename: "Administrative" }} />}
+                  </>
+                );
               }}
             />
           </Grid>
