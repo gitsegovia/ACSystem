@@ -114,7 +114,15 @@ function Scan() {
               precision={3}
               onComplete={clearData}
               renderer={(props) => {
-                return <CircularProgress />;
+                if (attendance.Teacher) {
+                  return <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Teacher, __typename: "Teacher" }} />;
+                }
+                if (attendance.Worker) {
+                  return <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Worker, __typename: "Worker" }} />;
+                }
+                if (attendance.Administrative) {
+                  return <UserViewMarkAttendance attendanceData={attendance} infoPersonal={{ ...attendance.Administrative, __typename: "Administrative" }} />;
+                }
               }}
             />
           </Grid>
