@@ -73,7 +73,7 @@ const TableHeader = (props: TableHeaderProps) => {
         `${moment(row.day).tz("America/Caracas").format("DD-MM-YYYY")}`,
         `${moment(row.in, "HH:mm").format("hh:mm a")}`,
         `${isAfter ? "Entrada tardía" : "Entrada correcta"}`,
-        `${row.out ? moment(row.out, "HH:mm").format("hh:mm a") : ""}`,
+        `${isAfter ? "" : row.out ? moment(row.out, "HH:mm").format("hh:mm a") : ""}`,
       ]);
     });
 

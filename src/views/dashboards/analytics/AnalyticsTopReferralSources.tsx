@@ -113,7 +113,7 @@ const RenderTabContent = ({ data }: { data: Attendance[] }) => {
                     sx={{
                       fontWeight: 600,
                       textAlign: "right",
-                      color: isAfter ? "error.main" : "success.main",
+                      color: "success.main",
                     }}
                   >{`${row.in}`}</Typography>
                 </TableCell>
@@ -123,10 +123,10 @@ const RenderTabContent = ({ data }: { data: Attendance[] }) => {
                     sx={{
                       fontWeight: 600,
                       textAlign: "right",
-                      color: isAfter ? "error.main" : "success.main",
+                      color: isAfter ? "warning.main" : "success.main",
                     }}
                   >
-                    {isAfter ? "Inasistente" : "Entrada correcta"}
+                    {isAfter ? "Entrada tardía" : "Entrada correcta"}
                   </Typography>
                 </TableCell>
                 <TableCell>

@@ -111,7 +111,7 @@ const columns: GridColDef[] = [
           sx={{
             fontWeight: 600,
             textAlign: "right",
-            color: isAfter ? "error.main" : "success.main",
+            color: "success.main",
           }}
         >{`${moment(row.in, "HH:mm").format("hh:mm a")}`}</Typography>
       );
@@ -130,10 +130,10 @@ const columns: GridColDef[] = [
           sx={{
             fontWeight: 600,
             textAlign: "right",
-            color: isAfter ? "error.main" : "success.main",
+            color: isAfter ? "warning.main" : "success.main",
           }}
         >
-          {isAfter ? "Inasistente" : "Entrada correcta"}
+          {isAfter ? "Entrada tardía" : "Entrada correcta"}
         </Typography>
       );
     },
