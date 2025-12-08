@@ -27,6 +27,9 @@ export default function generatePDF({ title, headerTable, dataFilter, nameFile }
         },
         head: [headerTable],
         body: dataFilter,
+        bodyStyles: {
+          textColor: [0, 0, 0], // Negro
+        },
         didDrawPage: function (data) {
           // Cabecera
           doc.setFontSize(12);
